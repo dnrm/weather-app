@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/results.css";
 
 export default function Results(props) {
+
     return (
         <div
             className="results"
             style={{
-                background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://source.unsplash.com/random?${props.city}')`,
+                background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://source.unsplash.com/random?wallpaper,${props.city}')`,
             }}
         >
             <div className="darken">
