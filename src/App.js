@@ -5,6 +5,7 @@ import Results from "./components/Results";
 
 function App() {
     const [city, setCity] = useState("London");
+    // eslint-disable-next-line no-unused-vars
     const [unit, setUnit] = useState("metric");
     const [weather, setWeather] = useState("");
     const [temperature, setTemperature] = useState("");
