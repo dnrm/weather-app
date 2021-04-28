@@ -1,0 +1,24 @@
+.form {
+    padding: 5vw;
+    font-size: 1.5em;
+}
+
+input {
+    border: 1px solid rgb(172, 172, 172);
+    color: rgb(94, 94, 94);
+    font-size: 0.8em;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: lighter;
+    width: 100%;
+    outline: none;
+    margin-top: 1vw;
+}
+
+button[type="submit"] {
+    margin-top: 1vw;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgb(172, 172, 172);
+    padding: 10px;
+}
