@@ -4,6 +4,13 @@ main {
   min-height: 100vh;
 }
 
-.form, .results {
-  min-height: 100vh;
+@media only screen and (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .results {
+    order: -1;
+    height: auto !important;
+  }
 }
