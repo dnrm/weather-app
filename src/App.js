@@ -2,28 +2,18 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Results from "./components/Results";
+import Sidebar from './components/Sidebar';
 import anime from "animejs";
 import firebase, { db } from './firebase'
 
 function App() {
-    const [city, setCity] = useState("London");
+    const [tempCity, setTempCity] = useState('');
+    const [city, setCity] = useState("");
     // eslint-disable-next-line
     const [unit, setUnit] = useState("metric");
     const [weather, setWeather] = useState("");
     const [temperature, setTemperature] = useState("");
     const API = "c73eea09d5030ffeaafaed52a3fafa78";
-
-    useEffect(() => {
-        document.addEventListener("keydown", () => {
-            document.getElementById("input").focus();
-        });
-
-        return () => {
-            document.removeEventListener("keydown", () => {
-                document.getElementById("input").focus();
-            });
-        };
-    }, []);
 
     useEffect(() => {
         anime({
@@ -44,6 +34,11 @@ function App() {
             duration: 3000,
             keyframes: [{ opacity: 0 }, { opacity: 1 }],
         });
+
+        anime({
+            targets: ['body'],
+            backgroundColor: 'white'
+        })
     }, []);
 
     useEffect(() => {
@@ -67,12 +62,13 @@ function App() {
                 })
                 .then((i) => {
                     if (i.main && i.weather) {
+                        setCity(i.name);
                         setTemperature(Math.ceil(i.main.temp));
                         setWeather(i.weather[0].main);
                     }
                 });
         } catch (e) {}
-    }, [city, unit]);
+    }, [city, unit])
 
     const handleSubmit = (e) => {
         anime({
@@ -89,11 +85,20 @@ function App() {
         );
     };
 
+    const handleClick = (i) => {
+        setTempCity(i.city)
+    }
+
+    const handleChange = (e) => {
+        setTempCity(e.target.value)
+    }
+
     return (
         <>
             <div id="cover"></div>
             <main>
-                <Form onSubmit={handleSubmit} />
+                <Sidebar onClick={handleClick} />
+                <Form onSubmit={handleSubmit} city={tempCity} onChange={handleChange} />
                 <Results
                     weather={weather}
                     temperature={temperature}

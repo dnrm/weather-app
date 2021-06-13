@@ -1,0 +1,51 @@
+.sidebar {
+    background-color: rgb(224, 224, 224);
+    width: 4em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 15px;
+    flex-direction: column;
+}
+
+#icon-sidebar {
+    width: 2em;
+    height: 2em;
+    margin-bottom: 1em;
+}
+
+.history {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    vertical-align: middle;
+}
+
+.history-icon {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 5px;
+}
+
+.sidebar-nav {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.sidebar-option {
+    font-size: 1.1em;
+}
+
+.history-elements {
+    margin-left: 5px;
+}
+
+.history-element button {
+    padding: 2px 0px;
+    border: none;
+    font-size: 1.1em;
+    background-color: transparent;
+}

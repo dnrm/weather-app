@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "../styles/form.css";
 
 export default function Form(props) {
@@ -8,6 +8,18 @@ export default function Form(props) {
 
     const handleMouseOver = () => setHovered(true);
     const handleMouseLeave = () => setHovered(false);
+
+    useEffect(() => {
+        document.addEventListener("keydown", () => {
+            document.getElementById("input").focus();
+        });
+
+        return () => {
+            document.removeEventListener("keydown", () => {
+                document.getElementById("input").focus();
+            });
+        };
+    }, []);
 
     return (
         <div className="form">
@@ -21,6 +33,8 @@ export default function Form(props) {
                     id="input"
                     autoComplete="off"
                     spellCheck="false"
+                    value={props.city}
+                    onChange={props.onChange}
                 />
                 <button
                     id="search"
