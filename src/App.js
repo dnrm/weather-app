@@ -47,6 +47,13 @@ function App() {
     }, []);
 
     useEffect(() => {
+        db.collection("cities")
+            .add({
+                city: city,
+                date: firebase.firestore.Timestamp.fromDate(new Date()),
+            })
+            .then((r) => console.log(r.id))
+            .catch((i) => console.log(i));
         try {
             fetch(
                 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=${unit}`
@@ -80,13 +87,6 @@ function App() {
                 w.replace(/^\w/, (c) => c.toUpperCase())
             )
         );
-        db.collection("cities")
-            .add({
-                city: city,
-                date: firebase.firestore.Timestamp.fromDate(new Date()),
-            })
-            .then((r) => console.log(r.id))
-            .catch((i) => console.log(i));
     };
 
     return (
