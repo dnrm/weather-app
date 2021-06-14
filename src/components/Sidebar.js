@@ -31,6 +31,7 @@ const Sidebar = (props) => {
     };
 
     db.collection("cities")
+        .orderBy("createdAt", "desc")
         .limit(10)
         .get()
         .then((docs) => {
